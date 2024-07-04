@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Header from "@/components/header";
 import HeroSection from "@/components/hero-section";
+import Details1 from "@/components/details1";
 import { Box } from "@chakra-ui/react";
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
       <Box px={{ base: "5px", md: "20px" }}>
         <Header />
         <HeroSection />
+        <Details1 />
       </Box>
     </>
   );

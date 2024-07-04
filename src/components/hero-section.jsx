@@ -203,7 +203,11 @@ const HeroSection = () => {
             flexGrow={1}
             aspectRatio={"1/1"}
             borderRadius={"50%"}
-            border={"4px dashed  #ffffff"}
+            border={{
+              base: "2px dashed  #ffffff",
+              md: "3px dashed  #ffffff",
+              lg: "4px dashed  #ffffff",
+            }}
             justifyContent={"center"}
             alignItems={"center"}
           >
