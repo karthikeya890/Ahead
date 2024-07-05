@@ -5,7 +5,7 @@ import { useRef } from "react";
 import Happy from "../../public/happy.png";
 import Sad from "../../public/sad.png";
 import Angry from "../../public/angry.png";
-import Phone from "../../public/Phone.png";
+import Phone from "../../public/phone.png";
 import Card from "../../public/card.png";
 import Image from "next/image";
 import { FaStar, FaApple } from "react-icons/fa";
