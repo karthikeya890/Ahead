@@ -15,7 +15,7 @@ const theme = extendTheme({
 
 export default function App({ Component, pageProps }) {
   return (
-    <ReactLenis root options={{ lerp: 0.1, duration: 1, smoothTouch: true }}>
+    <ReactLenis root options={{ duration: 3, smoothTouch: true }}>
       <ChakraProvider theme={theme}>
         <Component {...pageProps} />
       </ChakraProvider>

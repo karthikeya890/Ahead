@@ -6,14 +6,14 @@ import GrimacingEmoji from "../../public/grimacingEmoji.png";
 import RaisedEyeBrowEmoji from "../../public/raisedEyeBrow.png";
 import UnamusedEmoji from "../../public/unamusedEmoji.png";
 import GrinningEmoji from "../../public/grinningEmoji.png";
-
 import Image from "next/image";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
-gsap.registerPlugin(useGSAP);
-gsap.registerPlugin(ScrollTrigger);
+import ScrollToPlugin from "gsap/dist/ScrollToPlugin";
+
+gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollToPlugin);
 
 const SoundFamiliar = () => {
   const container = useRef();
@@ -99,9 +99,8 @@ const SoundFamiliar = () => {
         scrollTrigger: {
           trigger: XScrollContainer.current,
           start: "-80 center",
-          end: "bottom center",
+          end: "300 center",
           scrub: true,
-          pin: true,
         },
       }
     );
@@ -113,7 +112,7 @@ const SoundFamiliar = () => {
       style={{ overflowX: "hidden", position: "relative" }}
     >
       {/* Heading */}
-      <Flex ref={container} alignItems={"center"}>
+      <Flex ref={container}>
         <Text
           mb={20}
           ref={heading}

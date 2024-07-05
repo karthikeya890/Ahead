@@ -40,7 +40,7 @@ const HeroSection = () => {
 
   useGSAP(() => {
     new SplitType(heading.current, {
-      types: "lines, chars",
+      types: "chars",
     });
     gsap.to(leafmini.current, {
       rotate: -360,
@@ -70,49 +70,25 @@ const HeroSection = () => {
       y: -200,
     });
 
-    gsap.from(star1.current, {
-      scale: 0,
-      delay: 3,
-    });
-    gsap.from(star2.current, {
-      scale: 0,
-      delay: 3.2,
-    });
-    gsap.from(star3.current, {
-      scale: 0,
-      delay: 3.4,
-    });
-    gsap.from(star4.current, {
-      scale: 0,
-      delay: 3.6,
-    });
-    gsap.from(star5.current, {
-      scale: 0,
-      delay: 3.8,
-    });
 
-    gsap.from(heading.current.querySelectorAll(".line"), {
-      duration: 1,
-      opacity: 0,
-      y: -10,
-      ease: "elastic",
-      stagger: "1",
-    });
 
-    [
-      ...heading.current.querySelectorAll(".char"),
-      star1.current,
-      star2.current,
-      star3.current,
-      star4.current,
-      star5.current,
-    ].forEach((char) => {
-      char.addEventListener("mouseover", () => {
+    let delay = 0.2;
+
+    [...heading.current.querySelectorAll(".char")].forEach((char) => {
+      gsap.from(char, {
+        duration: 0.5,
+        opacity: 0,
+        y: -100,
+        stagger: "1",
+        delay: delay,
+      });
+      delay += 0.1;
+
+      char.addEventListener("mouseenter", () => {
         gsap.to(char, {
           y: -30,
-          duration: 1,
-          ease: "elastic",
-          stagger: "0.1",
+          duration: 0.5,
+          stagger: "1",
         });
       });
 
@@ -120,10 +96,35 @@ const HeroSection = () => {
         gsap.to(char, {
           y: 0,
           duration: 1,
-          ease: "elastic",
-          stagger: "0.1",
+          duration: 0.5,
+          stagger: "1",
         });
       });
+    });
+
+    gsap.from(star1.current, {
+      scale: 0,
+      delay: delay,
+    });
+    delay += 0.2
+    gsap.from(star2.current, {
+      scale: 0,
+      delay: delay,
+    });
+    delay += 0.2
+    gsap.from(star3.current, {
+      scale: 0,
+      delay: delay,
+    });
+    delay += 0.2
+    gsap.from(star4.current, {
+      scale: 0,
+      delay: delay,
+    });
+    delay += 0.2
+    gsap.from(star5.current, {
+      scale: 0,
+      delay: delay,
     });
 
     gsap.from(section1.current, {
@@ -174,7 +175,6 @@ const HeroSection = () => {
       bg="#d8d3f5"
       boxShadow={"0px 0px 8px 2px #0003"}
       borderRadius={30}
-      h={"450px"}
       mt={{ base: 5, md: 10 }}
       mx={{ base: "10px" }}
       border="2px solid #c1b8f2"
