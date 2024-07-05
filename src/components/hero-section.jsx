@@ -9,11 +9,14 @@ import Phone from "../../public/Phone.png";
 import Card from "../../public/card.png";
 import Image from "next/image";
 import { FaStar, FaApple } from "react-icons/fa";
+import Round1 from "../../public/round1.png";
+import Round2 from "../../public/round2.png";
+import Leaf from "../../public/leaf.png";
+import SplitType from "split-type";
 
 gsap.registerPlugin(useGSAP);
 
 const HeroSection = () => {
-  const mainSection = useRef();
   const section1 = useRef();
   const section2 = useRef();
   const HappyEmoji = useRef();
@@ -29,35 +32,98 @@ const HeroSection = () => {
   const star3 = useRef();
   const star4 = useRef();
   const star5 = useRef();
+  const round1 = useRef();
+  const round2 = useRef();
+  const leaf = useRef();
+  const leafmini = useRef();
+  const round2mini = useRef();
 
   useGSAP(() => {
+    new SplitType(heading.current, {
+      types: "lines, chars",
+    });
+    gsap.to(leafmini.current, {
+      rotate: -360,
+      repeat: -1,
+      duration: 25,
+      x: +100,
+      y: +100,
+    });
+    gsap.to(round2mini.current, {
+      rotate: 360,
+      repeat: -1,
+      duration: 20,
+      x: +400,
+      y: 50,
+      scale: 3,
+    });
+    gsap.to(leaf.current, {
+      rotate: 360,
+      repeat: -1,
+      duration: 20,
+    });
+    gsap.to(round1.current, {
+      rotate: 360,
+      repeat: -1,
+      duration: 50,
+      x: -200,
+      y: -200,
+    });
+
     gsap.from(star1.current, {
       scale: 0,
+      delay: 3,
     });
     gsap.from(star2.current, {
       scale: 0,
-      duration: 0.5,
-      delay: 0.5,
+      delay: 3.2,
     });
     gsap.from(star3.current, {
       scale: 0,
-      duration: 0.5,
-      delay: 1,
+      delay: 3.4,
     });
     gsap.from(star4.current, {
       scale: 0,
-      duration: 0.5,
-      delay: 1.5,
+      delay: 3.6,
     });
     gsap.from(star5.current, {
       scale: 0,
-      duration: 0.5,
-      delay: 2,
+      delay: 3.8,
     });
 
-    gsap.from(heading.current, {
-      x: -100,
+    gsap.from(heading.current.querySelectorAll(".line"), {
       duration: 1,
+      opacity: 0,
+      y: -10,
+      ease: "elastic",
+      stagger: "1",
+    });
+
+    [
+      ...heading.current.querySelectorAll(".char"),
+      star1.current,
+      star2.current,
+      star3.current,
+      star4.current,
+      star5.current,
+    ].forEach((char) => {
+      char.addEventListener("mouseover", () => {
+        gsap.to(char, {
+          y: -30,
+          duration: 1,
+          ease: "elastic",
+          stagger: "0.1",
+        });
+      });
+
+      char.addEventListener("mouseout", () => {
+        gsap.to(char, {
+          y: 0,
+          duration: 1,
+          ease: "elastic",
+          stagger: "0.1",
+        });
+      });
     });
 
     gsap.from(section1.current, {
@@ -105,11 +171,14 @@ const HeroSection = () => {
 
   return (
     <Box
-      bg="#EEEBFE"
+      bg="#d8d3f5"
+      boxShadow={"0px 0px 8px 2px #0003"}
       borderRadius={30}
-      h={"100%"}
+      h={"450px"}
       mt={{ base: 5, md: 10 }}
       mx={{ base: "10px" }}
+      border="2px solid #c1b8f2"
+      clipPath={"padding-box"}
     >
       <Flex
         h={"100%"}
@@ -129,11 +198,12 @@ const HeroSection = () => {
           height={"100%"}
           clipPath={"padding-box"}
         >
-          <Box ref={heading}>
+          <Box>
             <Text fontWeight={500}>Ahead app</Text>
             <Heading
+              ref={heading}
               mt={3}
-              fontSize={{ base: 25, sm: 37, lg: 43.5, xl: 50 }}
+              fontSize={{ base: 25, sm: 37, lg: 60 }}
               lineHeight={1}
             >
               Master your life <br /> by mastering <br /> emotions
@@ -147,14 +217,20 @@ const HeroSection = () => {
               mr={{ base: 3, sm: 4, md: 5 }}
             >
               <Flex alignItems={"center"}>
-                <Box mr={{ base: 1, sm: 2, md: 3 }}>
-                  <FaApple fontSize={{ base: 20, sm: 25, md: 30 }} />
+                <Box
+                  mr={{ base: 1, sm: 2, md: 3 }}
+                  fontSize={{ base: 20, sm: 25, md: 30 }}
+                >
+                  <FaApple />
                 </Box>
                 <Box>
-                  <Text fontSize={{ base: 8, sm: 9, md: 10 }}>
+                  <Text fontSize={{ base: 8, sm: 9, md: 10 }} fontWeight={400}>
                     Download on the
                   </Text>
-                  <Text fontSize={{ base: 10, sm: 12.5, md: 15 }}>
+                  <Text
+                    fontSize={{ base: 10, sm: 12.5, md: 15 }}
+                    fontWeight={400}
+                  >
                     App Store
                   </Text>
                 </Box>
@@ -164,19 +240,19 @@ const HeroSection = () => {
             <Flex flexDirection={"column"} justifyContent={"center"}>
               <Flex gap={1}>
                 <Box ref={star1} fontSize={{ base: 13, sm: 15.5, md: 18 }}>
-                  <FaStar color="#FCD343" />
+                  <FaStar color="#ffbb00" />
                 </Box>
                 <Box ref={star2} fontSize={{ base: 13, sm: 15.5, md: 18 }}>
-                  <FaStar color="#FCD343" />
+                  <FaStar color="#ffbb00" />
                 </Box>
                 <Box ref={star3} fontSize={{ base: 13, sm: 15.5, md: 18 }}>
-                  <FaStar color="#FCD343" />
+                  <FaStar color="#ffbb00" />
                 </Box>
                 <Box ref={star4} fontSize={{ base: 13, sm: 15.5, md: 18 }}>
-                  <FaStar color="#FCD343" />
+                  <FaStar color="#ffbb00" />
                 </Box>
                 <Box ref={star5} fontSize={{ base: 13, sm: 15.5, md: 18 }}>
-                  <FaStar color="#FCD343" />
+                  <FaStar color="#ffbb00" />
                 </Box>
               </Flex>
               <Text fontWeight={500} fontSize={{ base: 10, sm: 11, md: 12 }}>
@@ -188,7 +264,6 @@ const HeroSection = () => {
         {/* Animation Section */}
         <Flex
           order={{ base: 1, md: 2 }}
-          ref={mainSection}
           justifyContent={"center"}
           alignItems={"center"}
           position={"relative"}
@@ -290,7 +365,7 @@ const HeroSection = () => {
             maxHeight={250}
             maxWidth={250}
             aspectRatio={"1/1"}
-            bg={"#DDD6F8"}
+            bg={"#bab0f5"}
             borderRadius={"50%"}
           ></Box>
 
@@ -322,6 +397,50 @@ const HeroSection = () => {
             </Box>
           </Box>
         </Flex>
+        <Box ref={round1} alt="round1-img" position={"absolute"} width={"3.5%"}>
+          <Image src={Round1} alt="round-1" />
+        </Box>
+        <Box
+          ref={round2}
+          alt="round2-img"
+          position={"absolute"}
+          width={"3.5%"}
+          left={"1%"}
+          top={"23%"}
+        >
+          <Image src={Round2} alt="round-2" />
+        </Box>
+        <Box
+          ref={leaf}
+          alt="leaf-img"
+          position={"absolute"}
+          width={"12%"}
+          left={"10%"}
+          top={"6%"}
+        >
+          <Image src={Leaf} alt="leaf" />
+        </Box>
+
+        <Box
+          ref={leafmini}
+          alt="leaf-img"
+          position={"absolute"}
+          width={"4%"}
+          left={"50%"}
+          top={"12%"}
+        >
+          <Image src={Leaf} alt="leaf-2" />
+        </Box>
+        <Box
+          ref={round2mini}
+          alt="round2-img"
+          position={"absolute"}
+          width={"2%"}
+          left={"40%"}
+          top={"30%"}
+        >
+          <Image src={Round2} alt="round-2" />
+        </Box>
       </Flex>
     </Box>
   );

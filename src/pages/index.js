@@ -2,6 +2,7 @@ import Head from "next/head";
 import Header from "@/components/header";
 import HeroSection from "@/components/hero-section";
 import Details1 from "@/components/details1";
+import SoundFamiliar from "@/components/soundFamiliar";
 import { Box } from "@chakra-ui/react";
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
         <Header />
         <HeroSection />
         <Details1 />
+        <SoundFamiliar />
       </Box>
     </>
   );

@@ -7,8 +7,7 @@ const Details1 = () => {
       alignItems={{ base: "center" }}
       justifyContent={{ base: "start", md: "space-between" }}
       px={{ base: 2, md: 5 }}
-      py={{ base: 5 }}
-      mt={5}
+      mt={{ md: "100px" }}
     >
       <Box
         width={{ base: "100%", md: "30%" }}
