@@ -179,7 +179,7 @@ const SoundFamiliar = () => {
             You get a promotion at work
           </Text>
           <Text fontWeight={400} mt={1} fontSize={12}>
-            you questin yourself and wonder when they"ll realize you're an
+            you questin yourself and wonder when they"ll realize youre an
             unqualified imposter, instead of trusting yourself & your abilities
           </Text>
         </Box>
@@ -203,7 +203,7 @@ const SoundFamiliar = () => {
             You attend a class reunion
           </Text>
           <Text fontWeight={400} mt={1} fontSize={12}>
-            you compare yourself with your peers' achievements, instead of
+            you compare yourself with your peers achievements, instead of
             making your self-judegement more independent of others.
           </Text>
         </Box>
