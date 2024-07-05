@@ -179,7 +179,7 @@ const SoundFamiliar = () => {
             You get a promotion at work
           </Text>
           <Text fontWeight={400} mt={1} fontSize={12}>
-            you questin yourself and wonder when they"ll realize youre an
+            you questin yourself and wonder when they will realize youre an
             unqualified imposter, instead of trusting yourself & your abilities
           </Text>
         </Box>
